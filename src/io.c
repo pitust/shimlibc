@@ -2,33 +2,12 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <bits/deps.h>
 
 FILE *stdin = (FILE*)-3, *stdout = (FILE*)-2, *stderr = (FILE*)-1;
 
-static uint8_t inb(uint16_t p) {
-    uint8_t o;
-    asm volatile("inb %1, %0" : "=a"(o) : "Nd"(p));
-    return o;
-}
-static void serial_tx(char a) {
-    while ((inb(0x3F8 + 5) & 0x20) == 0) asm("pause");
-
-    asm volatile("outb %%al, %%dx" ::"a"(a), "d"(0x3f8));
-}
-static char serial_rx() {
-    while ((inb(0x3F8 + 5) & 1) == 0) asm("pause");
-
-    char c = inb(0x3F8);
-    serial_tx(c);
-    if (c == '\r') {
-        c = '\n';
-        serial_tx('\n');
-    }
-    return c;
-}
-
 void _putchar(char character) {
-    serial_tx(character);
+    __sysdep_outchar(character);
 }
 static void _outchr(char c, void* arg) {
     FILE* tf = arg;
@@ -60,7 +39,7 @@ size_t fwrite(const void* restrict ptr, size_t size, size_t nitems, FILE* restri
 }
 int getc(FILE* stream) {
     if (stream == stdin) {
-        return serial_rx();
+        return __sysdep_getchar();
     }
     printf("ERROR: unable to read from arbitrary streams yet!\n");
     abort();
@@ -82,9 +61,9 @@ void* fgets(void* s, uint64_t n, FILE* stream) {
             if (!c) continue;
             c--;
             *(--data) = 0;
-            serial_tx('\b');
-            serial_tx(' ');
-            serial_tx('\b');
+            __sysdep_outchar('\b');
+            __sysdep_outchar(' ');
+            __sysdep_outchar('\b');
             continue;
         }
         *data++ = chr;
