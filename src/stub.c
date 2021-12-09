@@ -5,7 +5,6 @@ void clearerr() { printf("todo: clearerr\n"); abort(); }
 void fclose() { printf("todo: fclose\n"); abort(); }
 void feof() { printf("todo: feof\n"); abort(); }
 void ferror() { printf("todo: ferror\n"); abort(); }
-void fopen() { printf("todo: fopen\n"); abort(); }
 void fread() { printf("todo: fread\n"); abort(); }
 void freopen() { printf("todo: freopen\n"); abort(); }
 void fseek() { printf("todo: fseek\n"); abort(); }

@@ -2,13 +2,11 @@
 
 #include <printf.h>
 #include <stdint.h>
+#include <bits/file.h>
 
 #define L_tmpnam 1024
 #define BUFSIZ 1024
 
-typedef struct FILE {
-    
-} FILE;
 int remove(const char* path);
 int rename(const char* old, const char* newname);
 
