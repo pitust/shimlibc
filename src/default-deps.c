@@ -4,6 +4,10 @@
 
 #define weak __attribute__((weak))
 
+weak void* __sysdep_morecore(intptr_t siz) {
+	printf("__sysdep_morecore(0x%llx): not implemented\n", siz);
+	abort();
+}
 weak char __sysdep_getchar(void) {
     printf("__sysdep_getchar: not implemented\n");
     abort();
