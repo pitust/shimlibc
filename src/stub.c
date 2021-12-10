@@ -25,7 +25,6 @@ void memchr() { printf("todo: memchr\n"); abort(); }
 void remove() { printf("todo: remove\n"); abort(); }
 void rename() { printf("todo: rename\n"); abort(); }
 void setvbuf() { printf("todo: setvbuf\n"); abort(); }
-void strerror() { printf("todo: strerror\n"); abort(); }
 void strtod() { printf("todo: strtod\n"); abort(); }
 void tmpfile() { printf("todo: tmpfile\n"); abort(); }
 void tmpnam() { printf("todo: tmpnam\n"); abort(); }

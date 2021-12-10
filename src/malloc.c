@@ -1,6 +1,8 @@
 #include <bits/deps.h>
 
+#ifdef __clang__
 #pragma GCC diagnostic ignored "-Wmacro-redefined"
+#endif
 
 #define USE_LOCKS 1
 #define USE_SPIN_LOCKS 1
