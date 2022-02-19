@@ -6,7 +6,7 @@
 int system(const char* cmd);
 const char* getenv(const char* env);
 
-void* malloc(uint64_t size);
+void* malloc(size_t size);
 void free(void*);
 void* realloc(void*, unsigned long);
 
