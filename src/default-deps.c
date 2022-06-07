@@ -19,3 +19,9 @@ weak _Bool __sysdep_fopen(FILE* file, const char* path) {
 weak void __sysdep_yield() {
     asm volatile("pause");
 }
+weak void __sysdep_exit(int code) {
+    printf("[%s exited with code %d]\n", getprogname(), code);
+    while (1) {
+        __sysdep_yield();
+    }
+}

@@ -2,13 +2,11 @@
 #include <printf.h>
 #include <stdlib.h>
 
- __attribute__((noreturn))
+__attribute__((noreturn))
 void exit(int ec) {
-    printf("[%s exited with code %d]\n", getprogname(), ec);
-    while (1) {
-        __sysdep_yield();
-    }
+    __sysdep_exit(ec);
 }
+
 __attribute__((noreturn))
 void abort() {
     printf("ERROR: aborted!\n");

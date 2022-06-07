@@ -147,7 +147,7 @@ FILE *fopen(const char *pathname, const char *mode) {
 			errno = EINVAL;
 			return NULL;
 		}
-		if (append) f->off = f->seek_lookup(SEEK_END, 0);
+		if (append) f->off = f->seek_lookup(SEEK_END, 0, 0);
 		else f->off = 0;
 	} else {
 		free(f);
