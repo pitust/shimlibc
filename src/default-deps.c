@@ -16,3 +16,6 @@ weak _Bool __sysdep_fopen(FILE* file, const char* path) {
     printf("__sysdep_fopen(%s): not implemented\n", path);
     abort();
 }
+weak void __sysdep_yield() {
+    asm volatile("pause");
+}
