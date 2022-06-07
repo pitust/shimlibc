@@ -1,11 +1,12 @@
-#include "printf.h"
-#include "stdlib.h"
- 
+#include <bits/deps.h>
+#include <printf.h>
+#include <stdlib.h>
+
  __attribute__((noreturn))
 void exit(int ec) {
-    printf("[plua exited with code %d]\n", ec);
+    printf("[%s exited with code %d]\n", getprogname(), ec);
     while (1) {
-        asm volatile("cli; hlt");
+        __sysdep_yield();
     }
 }
 __attribute__((noreturn))

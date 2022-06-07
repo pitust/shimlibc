@@ -15,5 +15,8 @@ void abort(void) __attribute__((noreturn));
 
 int abs(int);
 
+const char* getprogname(void);
+void setprogname(const char *progname);
+
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
